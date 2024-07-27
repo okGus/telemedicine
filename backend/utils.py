@@ -56,7 +56,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-symptoms = "I have a headache, sore throat, and a mild fever."
-diagnosis = analyze_symptoms(symptoms)
-print("Possible Diagnosis:")
-print(diagnosis)
