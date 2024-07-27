@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import PatientSchedule from "../components/PatientSchedule";
 import PatientHistory from "../components/PatientHistory";
+import AiChatBox from "../components/AIChatBox";
 import { mockScheduleData, mockPatientHistoryData } from "../mockData";
 const MainPage = () => {
   const [scheduleData, setScheduleData] = useState([]);
@@ -20,6 +21,7 @@ const MainPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <PatientSchedule scheduleData={scheduleData} />
         <PatientHistory historyData={historyData} />
+        <AiChatBox historyData={historyData} />
       </div>
     </div>
   );
