@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles */
+
+/* General styles */
+body {
+  @apply bg-gray-100 font-sans;
+}
+
+.container {
+  @apply max-w-6xl mx-auto px-4 py-8;
+}
+
+/* Component styles */
+.component-container {
+  @apply bg-white shadow-lg rounded-lg p-6 mb-8;
+}
+
+.component-title {
+  @apply text-3xl font-bold mb-6 text-gray-800;
+}
+
+/* AI Chat Box */
+.ai-chat-box {
+  @apply bg-gradient-to-r from-blue-100 to-teal-100;
+}
+
+.ai-chat-form {
+  @apply space-y-4;
+}
+
+.ai-chat-label {
+  @apply block text-blue-700 text-sm font-semibold mb-2;
+}
+
+.ai-chat-textarea {
+  @apply w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500 resize-none;
+}
+
+.ai-chat-button {
+  @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg;
+}
+
+.ai-response {
+  @apply mt-6 bg-white rounded-lg p-4 shadow-inner;
+}
+
+.ai-response-title {
+  @apply text-xl font-bold text-blue-800 mb-2;
+}
+
+.ai-response-text {
+  @apply text-gray-700 leading-relaxed;
+}
+
+/* Patient History and Schedule */
+.patient-table-container {
+  @apply overflow-x-auto bg-white rounded-lg shadow;
+}
+
+.patient-table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.patient-table-header {
+  @apply bg-gray-50;
+}
+
+.patient-table-header th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.patient-table-body {
+  @apply bg-white divide-y divide-gray-200;
+}
+
+.patient-table-row {
+  @apply hover:bg-gray-50;
+}
+
+.patient-table-cell {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-500;
+}
+
+.patient-table-cell-highlight {
+  @apply px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .component-title {
+    @apply text-2xl;
+  }
+
+  .patient-table-container {
+    @apply overflow-x-scroll;
+  }
+}
