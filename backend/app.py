@@ -3,10 +3,23 @@ from utils import analyze_symptoms, create_appointment, create_patient
 import os
 import requests
 from flask_cors import CORS, cross_origin
+from dotenv import load_dotenv
+
+load_dotenv()
+import mysql.connector
+from mysql.connector import Error
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+
+# Database connection configuration
+db_config = {
+    'host': 'localhost',
+    'database': 'TelemedicineDB',
+    'user': os.environ.get("DB_USERNAME"),
+    'password': os.environ.get("DB_PASSWORD")
+}
 
 @app.route('/consult', methods=['POST'])
 @cross_origin()
@@ -45,3 +58,4 @@ def auth_user():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=6969 ,debug=True)
+    
