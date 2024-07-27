@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from utils import analyze_symptoms, create_appointment, create_patient
+from db import get_all_appointments, get_all_patients, search_patient_by_name, add_patient
 import os
-import requests
 from flask_cors import CORS, cross_origin
 from dotenv import load_dotenv
 
@@ -31,31 +31,36 @@ def consult():
     diagnosis = analyze_symptoms(symptoms)
     return jsonify({"diagnosis": diagnosis})
 
-@app.route('/create_appointment', methods=['POST'])
-def create_appointment_():
-    data = request.form['patient_app']
-    res = create_appointment(data)
-    return res
+@app.route('/appointments', methods=['GET'])
+def appointments():
+    appointments = get_all_appointments()
+    return jsonify(appointments)
 
+@app.route('/patients', methods=['GET'])
+def patients():
+    patients = get_all_patients()
+    return jsonify(patients)
 
-@app.route('/create_patient', methods=['POST'])
-def create_patient_():
-    data = request.form['patient_info']
-    res = create_patient(data)
-    return res
+@app.route('/search_patient', methods=['GET'])
+def search_patient():
+    name = request.args.get('name', '')
+    if not name:
+        return jsonify({"error": "No name provided"}), 400
+    patients = search_patient_by_name(name)
+    return jsonify(patients)
 
-@app.route('/auth')
-def auth_user():
-    url = "https://nexhealth.info/authenticates"
-
-    headers = {
-        "accept": "application/vnd.Nexhealth+json;version=2",
-        "Authorization": os.environ.get("NEXHEALTH_API_KEY")
-    }
-
-    response = requests.post(url, headers=headers)
-    return response 
+@app.route('/add_patient', methods=['POST'])
+def add_patient_route():
+    name = request.form.get('name')
+    age = request.form.get('age')
+    gender = request.form.get('gender')
+    race = request.form.get('race')
+    
+    if not all([name, age, gender, race]):
+        return jsonify({"error": "Missing patient information"}), 400
+    
+    patient_id = add_patient(name, age, gender, race)
+    return jsonify({"status": "Patient created successfully", "patient_id": patient_id})
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=6969 ,debug=True)
-    
+    app.run(host='127.0.0.1', port=6969, debug=True)
