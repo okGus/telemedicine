@@ -1,3 +1,4 @@
 .env/
-venv/
-openai-env/
+backend/venv/
+backend/openai-env/
+backend/__pycache__/
