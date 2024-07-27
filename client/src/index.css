@@ -6,7 +6,7 @@
 
 /* General styles */
 body {
-  @apply bg-gray-100 font-sans;
+  @apply bg-gunmetal text-white_smoke font-sans;
 }
 
 .container {
@@ -15,77 +15,79 @@ body {
 
 /* Component styles */
 .component-container {
-  @apply bg-white shadow-lg rounded-lg p-6 mb-8;
+  @apply bg-white_smoke shadow-lg rounded-lg p-6 mb-8;
 }
 
 .component-title {
-  @apply text-3xl font-bold mb-6 text-gray-800;
+    @apply text-3xl font-bold mb-6 text-gunmetal;
+  }
+.ai-title {
+    @apply text-white_smoke
 }
-
 /* AI Chat Box */
 .ai-chat-box {
-  @apply bg-gradient-to-r from-blue-100 to-teal-100;
-}
+    @apply bg-gradient-to-r from-[#a9927d] to-[#6a5847];
+  }
 
 .ai-chat-form {
   @apply space-y-4;
 }
 
 .ai-chat-label {
-  @apply block text-blue-700 text-sm font-semibold mb-2;
+  @apply block text-black text-sm font-semibold mb-2;
 }
 
 .ai-chat-textarea {
-  @apply w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500 resize-none;
+  @apply w-full px-3 py-2 text-black border rounded-lg focus:outline-none focus:border-beaver resize-none;
 }
 
 .ai-chat-button {
-  @apply w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg;
+  @apply w-full bg-beaver hover:bg-[#8e765f] text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg;
 }
 
 .ai-response {
-  @apply mt-6 bg-white rounded-lg p-4 shadow-inner;
+  @apply mt-6 bg-white_smoke rounded-lg p-4 shadow-inner;
 }
 
 .ai-response-title {
-  @apply text-xl font-bold text-blue-800 mb-2;
+  @apply text-xl font-bold text-beaver mb-2;
 }
 
 .ai-response-text {
-  @apply text-gray-700 leading-relaxed;
+  @apply text-black leading-relaxed;
 }
 
 /* Patient History and Schedule */
 .patient-table-container {
-  @apply overflow-x-auto bg-white rounded-lg shadow;
+  @apply overflow-x-auto bg-white_smoke rounded-lg shadow;
 }
 
 .patient-table {
-  @apply min-w-full divide-y divide-gray-200;
+  @apply min-w-full divide-y divide-gunmetal;
 }
 
 .patient-table-header {
-  @apply bg-gray-50;
+  @apply bg-gunmetal;
 }
 
 .patient-table-header th {
-  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+  @apply px-6 py-3 text-left text-xs font-medium text-white_smoke uppercase tracking-wider;
 }
 
 .patient-table-body {
-  @apply bg-white divide-y divide-gray-200;
+  @apply bg-white_smoke divide-y divide-gunmetal;
 }
 
 .patient-table-row {
-  @apply hover:bg-gray-50;
+  @apply hover:bg-[#bdc7c2];
 }
 
 .patient-table-cell {
-  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-500;
+  @apply px-6 py-4 whitespace-nowrap text-sm text-black;
 }
 
 .patient-table-cell-highlight {
-  @apply px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900;
+  @apply px-6 py-4 whitespace-nowrap text-sm font-medium text-walnut_brown;
 }
 
 /* Responsive adjustments */
