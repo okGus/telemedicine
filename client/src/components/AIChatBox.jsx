@@ -31,7 +31,7 @@ const AiChatBox = ({ historyData }) => {
 
   return (
     <div className="component-container ai-chat-box">
-      <h2 className="component-title">AI Chat Assistant</h2>
+      <h2 className="component-title ai-title">AI Chat Assistant</h2>
       <form onSubmit={handleSubmit} className="ai-chat-form">
         <div>
           <label className="ai-chat-label">
