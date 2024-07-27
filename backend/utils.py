@@ -25,7 +25,8 @@ def analyze_symptoms(symptoms_text):
         ],
     )
 
-    return res.choices[0].message
+    # print(res.choices[0].message.content)
+    return res.choices[0].message.content
 
 # symptoms = "I have a headache, sore throat, and a mild fever."
 # diagnosis = analyze_symptoms(symptoms)

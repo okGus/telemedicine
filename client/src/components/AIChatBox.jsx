@@ -5,9 +5,28 @@ const AiChatBox = ({ historyData }) => {
   const [question, setQuestion] = useState("");
   const [response, setResponse] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    const formData = new FormData();
+    formData.append('symptoms', e.target);
     // ... (rest of the handleSubmit function remains the same)
+    const response = await fetch("http://127.0.0.1:6969/consult", {
+      method: "POST",
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Accept': 'application/json',
+      },
+      body: formData
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // below causes errors
+    const data = await response.json();
+    console.log(data);
   };
 
   return (
