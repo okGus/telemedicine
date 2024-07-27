@@ -1,3 +1,4 @@
+from flask import Flask, request, jsonify
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
@@ -9,7 +10,13 @@ client = OpenAI(
 )
 # defaults to getting the key using os.environ.get("OPEN_API_KEY")
 
-def analyze_symptoms(symptoms_text):
+app = Flask(__name__)
+
+@app.route('/analyze_symptoms', methods=['POST'])
+def analyze_symptoms():
+    data = request.json
+    symptoms_text = data.get('symptoms')
+    
     res = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
@@ -19,12 +26,35 @@ def analyze_symptoms(symptoms_text):
             },
             {
                 "role": "user",
-                "content": ""
+                "content": symptoms_text
             }
         ],
     )
 
-    return res.choices[0].message
+    diagnosis = res.choices[0].message
+    return jsonify({'diagnosis': diagnosis})
+
+@app.route('/create_patient', methods=['POST'])
+def create_patient():
+    data = request.json
+    # Process the data and create a new patient
+    # Example: patient_name = data.get('name')
+    # Implement patient creation logic here
+    
+    return jsonify({'status': 'Patient created successfully'})
+
+@app.route('/create_appointment', methods=['POST'])
+def create_appointment():
+    data = request.json
+    # Process the data and create a new appointment
+    # Example: appointment_time = data.get('time')
+    # Implement appointment creation logic here
+    
+    return jsonify({'status': 'Appointment created successfully'})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
 symptoms = "I have a headache, sore throat, and a mild fever."
 diagnosis = analyze_symptoms(symptoms)
