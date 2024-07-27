@@ -8,6 +8,24 @@ const MainPage = () => {
   const [historyData, setHistoryData] = useState([]);
 
   useEffect(() => {
+    const fetchToken = async () => {
+      const response = await fetch('http://127.0.0.1:6969/auth', {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+    };
+
+    fetchToken();
+
+  }, []);
+
+  useEffect(() => {
     // Simulating an API call with a setTimeout
     setTimeout(() => {
       setScheduleData(mockScheduleData);
