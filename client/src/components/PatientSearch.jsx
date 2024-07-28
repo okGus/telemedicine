@@ -55,8 +55,8 @@ const SearchPatients = () => {
       {patients.length > 0 && (
         <ul className="mt-4">
           {patients.map((patient) => (
-            <li key={patient.id} className="mb-2">
-              {patient.name} - {patient.email}
+            <li key={patient.PatientID} className="mb-2 text-2xl font-bold text-black">
+              {patient.Name} - {patient.email}
             </li>
           ))}
         </ul>
