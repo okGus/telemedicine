@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import PatientSchedule from "../components/PatientSchedule";
 import PatientHistory from "../components/PatientHistory";
 import AiChatBox from "../components/AIChatBox";
+import PatientSearch from "../components/PatientSearch";
 import { mockScheduleData, mockPatientHistoryData } from "../mockData";
+import AddPatient from "../components/AddPatient";
 const MainPage = () => {
   const [scheduleData, setScheduleData] = useState([]);
   const [historyData, setHistoryData] = useState([]);
@@ -22,6 +24,8 @@ const MainPage = () => {
         <PatientSchedule scheduleData={scheduleData} />
         <PatientHistory historyData={historyData} />
         <AiChatBox historyData={historyData} />
+        <PatientSearch />
+        <AddPatient />
       </div>
     </div>
   );

@@ -10,19 +10,19 @@ import mysql.connector
 from mysql.connector import Error
 
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# cors = CORS(app)
+CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Database connection configuration
 db_config = {
-    'host': 'localhost',
+    'host': '127.0.0.1',
     'database': 'TelemedicineDB',
     'user': os.environ.get("DB_USERNAME"),
     'password': os.environ.get("DB_PASSWORD")
 }
 
 @app.route('/consult', methods=['POST'])
-@cross_origin()
 def consult():
     symptoms = request.form.get('symptoms')
     if not symptoms:

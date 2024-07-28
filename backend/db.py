@@ -1,12 +1,13 @@
 import mysql.connector
 from mysql.connector import Error
+import os
 
 # Database connection configuration
 db_config = {
-    'host': 'localhost',
+    'host': '127.0.0.1',
     'database': 'TelemedicineDB',
-    'user': 'your_username',
-    'password': 'your_password'
+    'user': os.environ.get("DB_USERNAME"),
+    'password': os.environ.get("DB_PASSWORD")
 }
 
 # Function to create a database connection
